@@ -1,0 +1,27 @@
+body {
+  height: 100vh;
+  box-sizing: border-box;
+  background-color:  #FAF3E0;
+  color: #6B4226;
+}
+
+.galeria-doces {
+    display: flex;
+    flex-direction: column;  /* empilha os doces verticalmente */
+    align-items: flex-start; /* alinha tudo à esquerda */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.bolo {
+    display: flex;
+    align-items: center;   /* imagem e texto ficam centralizados na mesma linha */
+    gap: 15px;
+    max-width: 400px;      /* controla largura máxima */
+}
+
+.nome-bolo {
+    white-space: nowrap;   /* impede o nome de quebrar em duas linhas */
+    font-weight: bold;
+    font-size: 16px;
+}
