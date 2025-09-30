@@ -48,9 +48,9 @@ foreach ($Funcionarios as $Dados) {
     // Criar array associativo para cada funcionário
     $FuncionariosAssociativo[] = [
         'nome' => $Dados[0],
-        'salario base' => $salarioBase,
-        'horas extras' => $horasExtras,
-        'salario total' => $salarioTotal
+        'salario_base' => $salarioBase,
+        'horas_extras' => $horasExtras,
+        'salario_total' => $salarioTotal
     ];
 }
 
