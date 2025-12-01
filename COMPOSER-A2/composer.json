@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ralouphie/getallheaders": "^3.0",
+        "symfony/translation": "7.0"
+    }
+}
