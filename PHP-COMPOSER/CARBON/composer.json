@@ -1,0 +1,6 @@
+{
+    "name": "lucia/carbon",
+    "require": {
+        "nesbot/carbon": "^3.11"
+    }
+}
