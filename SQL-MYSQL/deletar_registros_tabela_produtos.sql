@@ -1,0 +1,1 @@
+DELETE from produtos WHERE id = 5; 
