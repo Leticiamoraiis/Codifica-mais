@@ -1,48 +1,113 @@
 <?php
 
-class ContaBancaria {
-    private $numeroConta;
-    private $nomeTitular;
-    private $saldo;
+class ContaBancaria
+{
+    public int $numeroDaConta;
+    public string $nomeDoTitular;
+    public float $saldo = 0;
 
-    public function __construct($numeroConta, $nomeTitular) {
-        $this->numeroConta = $numeroConta;
-        $this->nomeTitular = $nomeTitular;
-        $this->saldo = 0;
-    }
+    public function __construct(int $numeroDaConta, string $nomeDoTitular, $saldo = 0)
+    {
+//        throw new \InvalidArgumentException("Objeto não inicializado.");
 
-    public function depositar($quantia) {
-        if ($quantia > 0) {
-            $this->saldo += $quantia;
-            echo "Depósito de R$ $quantia realizado com sucesso.<br>";
-        } else {
-            echo "Valor inválido para depósito.<br>";
+        $this->numeroDaConta = $numeroDaConta;
+        $this->nomeDoTitular = $nomeDoTitular;
+        $this->saldo = $saldo;
+
+        if ($saldo < 0) {
+            $this->saldo = 0;
         }
     }
 
-    public function sacar($quantia) {
-        if ($quantia > 0 && $quantia <= $this->saldo) {
-            $this->saldo -= $quantia;
-            echo "Saque de R$ $quantia realizado com sucesso.<br>";
-        } else {
-            echo "Saldo insuficiente ou valor inválido.<br>";
+    public static function criarConta($conta, $titular, $valor) {
+        if($valor < 1500) {
+            echo "Não foi possível criar conta\n";
+            return null;
         }
+
+        return new self($conta, $titular, $valor);
+    }
+    public function depositar(float $quantia)
+    {
+        if ($quantia <= 0) {
+            echo "Digite uma quantia válida/positiva\n";
+            return;
+        }
+
+        $this->saldo = $this->saldo + $quantia;
+        $quantiaFormatada = number_format($quantia, 2, ',', '.');
+
+        echo "Depósito de R$ {$quantiaFormatada} realizado com sucesso na conta {$this->numeroDaConta}\n";
+        return;
     }
 
-    public function exibirSaldo() {
-        echo "Saldo atual: R$ " . $this->saldo . "<br>";
+    public function getSaldo()
+    {
+        return $this->saldo;
+    }
+
+    public function getNumeroDaConta()
+    {
+        return $this->numeroDaConta;
+    }
+
+    public function sacar(float $quantia)
+    {
+        if ($quantia > $this->saldo) {
+            echo "Saldo insuficiente para realizar o saque\n";
+            return;
+        }
+
+        $this->saldo = $this->saldo - $quantia;
+        $quantiaFormatada = number_format($quantia, 2, ',', '.');
+
+        echo "Saque de R$ {$quantiaFormatada} realizado com sucesso na conta {$this->numeroDaConta}\n";
+        return;
+    }
+
+    public function exibirSaldo()
+    {
+        $saldoFormatado = number_format($this->saldo, 2, ',', '.');
+        echo "O saldo da conta {$this->numeroDaConta}, do titular {$this->nomeDoTitular} é: R$ {$saldoFormatado}\n";
+        return;
     }
 }
 
-// ==============================
-// TESTES
-// ==============================
+$conta = ContaBancaria::criarConta(1000019, 'Gabriel', 2000);
+var_dump($conta);
 
-$conta = new ContaBancaria("875246", "Leticia Morais");
+$contaDoGabriel = new ContaBancaria(1000019, 'Gabriel', -10);
+var_dump($contaDoGabriel);
 
-$conta->depositar(100);
-$conta->sacar(30);
-$conta->exibirSaldo();
+// Instanciando conta
+$contaDoGabriel->exibirSaldo();
 
-$conta->depositar(0);
-$conta->sacar(500);
+// Deposito
+$contaDoGabriel->depositar(50000);
+$contaDoGabriel->exibirSaldo();
+
+// Forçar um saque maior do que o saldo
+$contaDoGabriel->sacar(1000000);
+
+// Saque válido
+$contaDoGabriel->sacar(50);
+$contaDoGabriel->exibirSaldo();
+
+// Quero comprar um avião
+$aviaoCusta = 10000000;
+
+// Posso comprar?
+if ($contaDoGabriel->getSaldo() >= $aviaoCusta) {
+    echo "Posso comprar!\n";
+} else {
+    echo "Não posso comprar!\n";
+}
+
+$arrayDeContas = [
+    $contaDoGabriel->getNumeroDaconta() => $contaDoGabriel
+];
+
+$arrayDeContasDoIan[] = new ContaBancaria(1000020, 'Ian', 500000);
+
+
+var_dump($arrayDeContas);
