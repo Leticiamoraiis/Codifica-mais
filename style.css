@@ -1,0 +1,173 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* TÍTULO */
+h2 {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* TABELA BASE */
+table {
+    width: 100%;
+    table-layout:auto;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+/* CABEÇALHO */
+th {
+    background: #222;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* LINHAS */
+td {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+/* NOME + IMAGEM */
+.nome-produto {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* IMAGEM */
+.nome-produto img {
+    width: 90px; /* mobile primeiro */
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+/* AÇÕES */
+td a {
+    display: inline-block;
+    margin-right: 8px;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    margin-top: auto; /*empurra para o final da pagina */
+    bottom; 0; /* gruda na parte inferior */
+    margin-top: auto;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 13px;
+    color: #222222;
+}
+
+/* ========================= 📱 TABLET (≥ 768px) ========================= */
+@media (min-width: 768px) {
+    .nome-produto {
+        gap: 24px;
+    }
+}
+
+/* ========================= 💻 DESKTOP (≥ 1024px) ========================= */
+@media (min-width: 1024px) {
+    .nome-produto {
+        gap:32px;
+    }
+    table {
+        max-width: 1100px;
+        margin: auto;
+    }
+}
+
+/* COLUNA DESCRIÇÃO */
+.descricao-coluna {
+    width: 260px; /* Ajuste para aproximar do nome */
+    word-wrap: break-word; /* Quebra texto longo em múltiplas linhas */
+    white-space: normal; /* Permite quebra de linha normal */
+    text-align: center; /* Centraliza o texto */
+}
+
+.home-wrapper {
+    flex: 1;
+    min-height: 100vh;
+    background-image: url("uploads/tela_fundo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container {
+    background: #fff;
+    padding: 40px 32px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.home-container h1 {
+    margin-bottom: 24px;
+    color: #222;
+}
+
+.home-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.home-actions a {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* BOTÃO LOGIN */
+.home-actions a.login {
+    background: #222;
+    color: #fff;
+}
+
+.home-actions a.login:hover {
+    background: #000;
+}
+
+/* BOTÃO CADASTRO */
+.home-actions a.cadastro {
+    background: #0066cc;
+    color: #fff;
+}
+
+.home-actions a.cadastro:hover {
+    background: #004c99;
+}
