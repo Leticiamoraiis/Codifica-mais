@@ -3,7 +3,7 @@
 $host = 'localhost';
 $db   = 'gestao_estoque';
 $user = 'root';
-$pass = 'Adidesba146*.';
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
