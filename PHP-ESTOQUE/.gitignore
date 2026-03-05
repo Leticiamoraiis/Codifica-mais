@@ -1,0 +1,15 @@
+# IDEs e sistema
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários e logs do PHP
+*.log
+*.tmp
+*.cache
+*.bak
+session_*
+
+# Arquivos temporários do XAMPP
+C:/xampp/tmp/
+C:/xampp/apache/logs/
